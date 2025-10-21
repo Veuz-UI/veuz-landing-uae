@@ -3367,7 +3367,12 @@ fieldset {
   transition: all 0.3s ease;
   pointer-events: none;
   background-color: var(--white);
-  width: 750px;
+  width: 250px;
+}
+
+.big-menu{
+    width: 750px;
+
 }
 .sub-menu .sub-menu-item {
   -webkit-transition: all 0.3s ease;
@@ -3382,7 +3387,7 @@ fieldset {
   position: relative;
   font-weight: 500;
   width: 100%;
-  padding: 10px 24px;
+  padding: 12px 24px;
 }
 .sub-menu .sub-menu-item:hover {
   background-color: var(--primary);
