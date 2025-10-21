@@ -3355,7 +3355,6 @@ fieldset {
 
 .sub-menu {
   position: absolute;
-  width: 800px;
   left: -25px;
   top: 110%;
   opacity: 0;
@@ -3368,6 +3367,7 @@ fieldset {
   transition: all 0.3s ease;
   pointer-events: none;
   background-color: var(--white);
+  width: 750px;
 }
 .sub-menu .sub-menu-item {
   -webkit-transition: all 0.3s ease;
