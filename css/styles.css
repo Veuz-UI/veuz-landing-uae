@@ -885,9 +885,7 @@ a:hover, a:focus {
   bottom: -41%;
   left: -27%;
 }
-.footer .footer-bottom {
-  margin-bottom: 40px;
-}
+
 .footer .locations-contact {
   max-width: 240px;
   width: 100%;
@@ -3697,3 +3695,218 @@ fieldset {
   padding-left: 0px;
   border-right: none;
 }
+
+
+/* footer */
+
+.footer-heading {
+      color: #ffffff;
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 25px;
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 20px;
+    }
+
+    .footer-links a {
+      color: #c5d0d0;
+      text-decoration: none;
+      font-size: 18px;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: #8af135;
+    }
+
+    .newsletter-text {
+      color: #c5d0d0;
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .email-link {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 15px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 25px;
+      transition: color 0.3s ease;
+    }
+
+    .email-link:hover {
+      color: #ffffff;
+    }
+
+    .email-link i {
+      font-size: 18px;
+    }
+
+    .newsletter-form {
+      position: relative;
+      max-width: 75%;
+    }
+
+    .newsletter-input {
+      width: 100%;
+      padding: 20px 60px 20px 20px;
+      border: none;
+      border-radius: 30px;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .newsletter-input::placeholder {
+      color: #c5d0d0;
+    }
+
+    .newsletter-input:focus {
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .newsletter-btn {
+      position: absolute;
+      right: 5px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background-color: #a4d65e;
+      border: none;
+      color: #171818;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .newsletter-btn:hover {
+      background-color: #8ec44a;
+    }
+
+    .office-info {
+      margin-bottom: 20px;
+    }
+
+    .office-label {
+      color: #c5d0d0;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .office-value {
+      color: #ffffff;
+      font-size: 18px;
+    }
+    .office-info a{
+            color: #ffffff;
+
+    }
+
+    .office-divider {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin: 20px 0;
+    }
+
+    .footer-bottom {
+      background-color: #334747;
+      padding: 25px 0;
+      margin-top: 40px;
+    }
+
+    .logo-container img {
+      height: 50px;
+      width: auto;
+    }
+
+    .copyright-text {
+      color: #c5d0d0;
+      font-size: 18px;
+      margin: 0;
+      text-align: center;
+    }
+
+    .copyright-text .company-name {
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+      background-color: #a4d65e;
+      color: #2d4545;
+    }
+    .email-link span{
+      color: #ffffff;
+      font-size: 20px;
+    }
+
+    @media (max-width: 991px) {
+      .footer-section {
+        padding: 40px 0 20px;
+      }
+
+      .footer-heading {
+        font-size: 20px;
+        margin-bottom: 20px;
+      }
+
+      .social-links {
+        justify-content: center;
+        margin-top: 20px;
+      }
+
+      .copyright-text {
+        margin-bottom: 15px;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .footer-section {
+        padding: 30px 0 15px;
+      }
+
+      .footer-heading {
+        margin-top: 25px;
+      }
+
+      .newsletter-form {
+        max-width: 100%;
+      }
+    }

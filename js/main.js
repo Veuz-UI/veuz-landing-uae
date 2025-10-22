@@ -275,48 +275,92 @@
         }
     };
 
-    var goTop = function () {
-        if ($("div").hasClass("progress-wrap")) {
-            var progressPath = document.querySelector(".progress-wrap path");
+    
+
+var goTop = function () {
+    // Check for the required element before proceeding
+    if (jQuery("div").hasClass("progress-wrap")) {
+        
+        // --- 1. Progress Bar Initialization ---
+        var progressPath = document.querySelector(".progress-wrap path");
+        
+        // Only run SVG path logic if the path element exists
+        if (progressPath) {
             var pathLength = progressPath.getTotalLength();
-            progressPath.style.transition = progressPath.style.WebkitTransition =
-                "none";
+            
+            // Disable transition for immediate setting of dasharray/offset
+            progressPath.style.transition = progressPath.style.WebkitTransition = "none";
             progressPath.style.strokeDasharray = pathLength + " " + pathLength;
             progressPath.style.strokeDashoffset = pathLength;
-            progressPath.getBoundingClientRect();
-            progressPath.style.transition = progressPath.style.WebkitTransition =
-                "stroke-dashoffset 10ms linear";
-            var updateprogress = function () {
-                var scroll = $(window).scrollTop();
-                var height = $(document).height() - $(window).height();
-                var progress = pathLength - (scroll * pathLength) / height;
-                progressPath.style.strokeDashoffset = progress;
-            };
-            updateprogress();
-            $(window).scroll(updateprogress);
-            var offset = 200;
-            var duration = 0;
-            jQuery(window).on("scroll", function () {
-                var offset = 200;
-                var scrollTop = jQuery(this).scrollTop();
-                var footerOffsetTop = jQuery(".footer-go-top").offset().top;
-                var windowHeight = jQuery(window).height();
-
-                if (scrollTop > offset && scrollTop + windowHeight < footerOffsetTop) {
-                    jQuery(".progress-wrap").addClass("active-progress");
-                } else {
-                    jQuery(".progress-wrap").removeClass("active-progress");
-                }
-            });
-
-            jQuery(".progress-wrap").on("click", function (event) {
-                event.preventDefault();
-                jQuery("html, body").animate({ scrollTop: 0 }, duration);
-                return false;
-            });
+            progressPath.getBoundingClientRect(); // Triggers a reflow/repaint
+            
+            // Re-enable transition for smooth progress update
+            progressPath.style.transition = progressPath.style.WebkitTransition = "stroke-dashoffset 10ms linear";
         }
-    };
 
+        // --- 2. Progress Update Logic ---
+        var updateprogress = function () {
+            if (!progressPath) return; // Exit if no path exists
+            
+            var scroll = jQuery(window).scrollTop();
+            // Use jQuery's way of getting document height
+            var height = jQuery(document).height() - jQuery(window).height(); 
+            
+            // Ensure we don't divide by zero if the document is not scrollable
+            if (height === 0) return;
+
+            var progress = pathLength - (scroll * pathLength) / height;
+            progressPath.style.strokeDashoffset = progress;
+        };
+        
+        // --- 3. Button Visibility Logic (Simplified) ---
+        var offset = 200; // Defines how far down to scroll before the button appears
+        
+        // Function to handle visibility
+        var toggleProgressWrap = function() {
+            var scrollTop = jQuery(window).scrollTop();
+            
+            // Check if the scroll position is greater than the defined offset (200px)
+            // *** Footer logic is removed, so it only checks scroll depth ***
+            if (scrollTop > offset) {
+                jQuery(".progress-wrap").addClass("active-progress");
+            } else {
+                jQuery(".progress-wrap").removeClass("active-progress");
+            }
+        }
+
+        // --- 4. Event Bindings ---
+        
+        // Bind functions to the scroll event
+        jQuery(window).on("scroll", function() {
+            if (progressPath) {
+                updateprogress(); // Update progress bar
+            }
+            toggleProgressWrap(); // Toggle button visibility
+        });
+        
+        // Run once on load to set initial state
+        if (progressPath) {
+            updateprogress();
+        }
+        toggleProgressWrap(); 
+
+        // --- 5. Scroll-to-Top Click Handler ---
+        var duration = 600; // Define scroll duration here (I've changed your 0 to 600ms for smooth scroll)
+        
+        jQuery(".progress-wrap").on("click", function (event) {
+            event.preventDefault();
+            // Animate scroll back to the top
+            jQuery("html, body").animate({ scrollTop: 0 }, duration);
+            return false;
+        });
+    }
+};
+
+// Execute the main function, typically inside a document ready block
+// jQuery(document).ready(function() {
+//     goTop();
+// });
 
     
 
